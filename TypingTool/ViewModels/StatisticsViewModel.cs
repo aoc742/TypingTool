@@ -28,6 +28,20 @@ namespace TypingTool.ViewModels
             }
         }
 
+        private double _wordsPerMinute = 0;
+        public double WordsPerMinute
+        {
+            get
+            {
+                return _wordsPerMinute;
+            }
+            set
+            {
+                this._wordsPerMinute = value;
+                OnPropertyChanged(nameof(WordsPerMinute));
+            }
+        }
+
         #region Commands
         private ICommand _startTimer;
         public ICommand StartTimer
@@ -86,6 +100,11 @@ namespace TypingTool.ViewModels
             _dispatcherTimer.Tick += _dispatcherTimer_Tick;
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             _stopwatch = new Stopwatch();
+        }
+
+        public double GetTimeInSeconds()
+        {
+            return _stopwatch.Elapsed.TotalSeconds;
         }
     }
 }

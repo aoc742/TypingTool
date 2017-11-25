@@ -41,15 +41,16 @@ namespace TypingTool.ViewModels
                 if (value == _quote && !String.IsNullOrWhiteSpace(value))
                 {
                     StatisticsViewModel.StopTimer.Execute(null);
-                    Times.Add(StatisticsViewModel.Timer);
+                    StatisticsViewModel.WordsPerMinute = (Quote.Length / 5) * (60 / StatisticsViewModel.GetTimeInSeconds());
+                    Times.Add(new TimeResults(StatisticsViewModel.GetTimeInSeconds(), StatisticsViewModel.WordsPerMinute));
                 }
                 this._text = value;
                 OnPropertyChanged(nameof(this.Text));
             }
         }
 
-        private ObservableCollection<string> _times = new ObservableCollection<string>();
-        public ObservableCollection<string> Times
+        private ObservableCollection<TimeResults> _times = new ObservableCollection<TimeResults>();
+        public ObservableCollection<TimeResults> Times
         {
             get
             {
@@ -72,6 +73,8 @@ namespace TypingTool.ViewModels
                 return _reset ?? (_reset = new DelegateCommand((obj) =>
                 {
                     Text = "";
+                    StatisticsViewModel.WordsPerMinute = 0;
+                    StatisticsViewModel.ResetTimer.Execute(null);
                 }));
             }
         }
@@ -82,6 +85,18 @@ namespace TypingTool.ViewModels
         }
         public InputViewModel()
         {
+        }
+    }
+
+    public class TimeResults
+    {
+        public double WordsPerMinute { get; set; }
+        public double Time { get; set; }
+
+        public TimeResults(double time, double wordsPerMinute)
+        {
+            Time = time;
+            WordsPerMinute = wordsPerMinute;
         }
     }
 }

@@ -17,7 +17,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" >
@@ -36,7 +36,16 @@
 
             <GroupBox Grid.Row="3" Header="Recent Times">
                 <ListBox ItemsSource="{Binding Times}"
-                         MinHeight="200" />
+                         MinHeight="200" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0">
+                                <TextBlock Text="{Binding Time, StringFormat={}{0} s}" />
+                                <TextBlock Text="{Binding WordsPerMinute, StringFormat={}{0} WPM}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </GroupBox>
         </Grid>
 
