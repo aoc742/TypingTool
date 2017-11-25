@@ -9,6 +9,5 @@ namespace TypingTool.ViewModels
     public class MainWindowViewModel : BaseViewModel
     {
         public InputViewModel InputViewModel { get; set; } = new InputViewModel();
-        public StatisticsViewModel StatisticsViewModel { get; set; } = new StatisticsViewModel();
     }
 }

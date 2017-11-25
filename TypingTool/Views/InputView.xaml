@@ -7,19 +7,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" >
-            <Label Content="Typing quote" />
-            <TextBox Text="{Binding Quote, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" MinHeight="100" />
-        </StackPanel>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1">
-            <Label Content="Type stuff here:" />
-            <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Height="23" />
-        </StackPanel>
+            <StackPanel Grid.Row="0" >
+                <Label Content="Typing quote" />
+                <TextBox Text="{Binding Quote, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" MinHeight="100" FontSize="18" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <Label Content="Type stuff here:" />
+                <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" FontSize="18" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <Button Content="Erase" Width="60" Height="23" Command="{Binding Reset}" />
+            </StackPanel>
+
+            <GroupBox Grid.Row="3" Header="Recent Times">
+                <ListBox ItemsSource="{Binding Times}"
+                         MinHeight="200" />
+            </GroupBox>
+        </Grid>
+
+        <local:StatisticsView Grid.Column="1" DataContext="{Binding StatisticsViewModel}" />
     </Grid>
 </UserControl>

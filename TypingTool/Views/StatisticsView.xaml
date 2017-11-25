@@ -14,9 +14,13 @@
 
         <StackPanel>
             <Label Content="Timer" />
-            <TextBlock Text="{Binding Timer}" />
+            <TextBlock Text="{Binding Timer}" FontSize="34" />
         </StackPanel>
 
-        <Button Content="Stop" Width="60" HorizontalAlignment="Center" Height="23" Command="{Binding StopTimer}" />
+        <WrapPanel Orientation="Horizontal">
+            <Button Content="Start" Width="60" HorizontalAlignment="Center" Height="23" Command="{Binding StartTimer}" />
+            <Button Content="Stop" Width="60" HorizontalAlignment="Center" Height="23" Command="{Binding StopTimer}" />
+            <Button Content="Reset" Width="60" HorizontalAlignment="Center" Height="23" Command="{Binding ResetTimer}" />
+        </WrapPanel>
     </StackPanel>
 </UserControl>

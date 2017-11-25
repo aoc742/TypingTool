@@ -13,11 +13,6 @@
     </Window.DataContext>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
         <vw:InputView Grid.Column="0" DataContext="{Binding InputViewModel}"/>
-        <vw:StatisticsView Grid.Column="1" DataContext="{Binding StatisticsViewModel}" />
     </Grid>
 </Window>

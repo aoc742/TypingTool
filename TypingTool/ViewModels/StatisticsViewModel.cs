@@ -28,6 +28,20 @@ namespace TypingTool.ViewModels
             }
         }
 
+        #region Commands
+        private ICommand _startTimer;
+        public ICommand StartTimer
+        {
+            get
+            {
+                return _startTimer ?? (_startTimer = new DelegateCommand((obj) =>
+                {
+                    _stopwatch.Start();
+                    _dispatcherTimer.Start();
+                }));
+            }
+        }
+
         private ICommand _stopTimer;
         public ICommand StopTimer
         {
@@ -35,27 +49,43 @@ namespace TypingTool.ViewModels
             {
                 return _stopTimer ?? (_stopTimer = new DelegateCommand((obj) =>
                 {
+                    _stopwatch.Stop();
                     _dispatcherTimer.Stop();
                 }));
             }
         }
 
+        private ICommand _resetTimer;
+        public ICommand ResetTimer
+        {
+            get
+            {
+                return _resetTimer ?? (_resetTimer = new DelegateCommand((obj) =>
+                {
+                    _dispatcherTimer.Tick -= _dispatcherTimer_Tick;
+                    initializeTimer();
+                    Timer = _stopwatch.Elapsed.TotalSeconds.ToString();
+                }));
+            }
+        }
+        #endregion Commands
+
         public StatisticsViewModel()
         {
-            _stopwatch.Start();
-            Timer = _stopwatch.Elapsed.ToString();
-
-            _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
-            _dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
-            _dispatcherTimer.Start();
+            initializeTimer();
         }
 
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            Timer = _stopwatch.Elapsed.TotalSeconds.ToString(); // Format as you wish
+            Timer = _stopwatch.Elapsed.TotalSeconds.ToString();
+        }
+
+        private void initializeTimer()
+        {
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            _stopwatch = new Stopwatch();
         }
     }
 }
