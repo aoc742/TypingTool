@@ -1,0 +1,14 @@
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\bin\Debug\TypingTool.exe.config
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\bin\Debug\TypingTool.exe
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\bin\Debug\TypingTool.pdb
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.csprojResolveAssemblyReference.cache
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\MainWindow.g.cs
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\App.g.cs
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool_MarkupCompile.cache
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool_MarkupCompile.lref
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\MainWindow.baml
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.g.resources
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.Properties.Resources.resources
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.csproj.GenerateResource.Cache
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.exe
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.pdb
