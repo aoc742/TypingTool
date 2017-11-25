@@ -7,9 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" >
+            <Label Content="Typing quote" />
+            <TextBox Text="{Binding Quote, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" MinHeight="100" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
             <Label Content="Type stuff here:" />
-            <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="3"/>
+            <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Height="23" />
         </StackPanel>
     </Grid>
 </UserControl>

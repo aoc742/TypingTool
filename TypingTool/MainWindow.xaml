@@ -7,12 +7,17 @@
         xmlns:vw="clr-namespace:TypingTool.Views"
         xmlns:local="clr-namespace:TypingTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Typing Tool" Height="350" Width="525">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    
-    <StackPanel>
-        <vw:InputView DataContext="{Binding InputViewModel}"/>
-    </StackPanel>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <vw:InputView Grid.Column="0" DataContext="{Binding InputViewModel}"/>
+        <vw:StatisticsView Grid.Column="1" DataContext="{Binding StatisticsViewModel}" />
+    </Grid>
 </Window>

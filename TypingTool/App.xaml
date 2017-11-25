@@ -9,5 +9,9 @@
         <DataTemplate DataType="{x:Type vm:InputViewModel}">
             <vw:InputView />
         </DataTemplate>
+
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
     </Application.Resources>
 </Application>

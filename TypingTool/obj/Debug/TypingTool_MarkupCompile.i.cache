@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\App.xaml
-2-758150744
+3-1792167477
 
-131373632607
+16-759515799
 13738642453
-MainWindow.xaml;Views\InputView.xaml;
+MainWindow.xaml;Views\InputView.xaml;Views\StatisticsView.xaml;
 
-False
+True
 

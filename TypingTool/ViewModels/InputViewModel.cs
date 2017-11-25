@@ -8,7 +8,21 @@ namespace TypingTool.ViewModels
 {
     public class InputViewModel : BaseViewModel
     {
-        private string _text;
+        private string _quote = String.Empty;
+        public string Quote
+        {
+            get
+            {
+                return _quote;
+            }
+            set
+            {
+                this._quote = value;
+                OnPropertyChanged(nameof(this.Quote));
+            }
+        }
+
+        private string _text = String.Empty;
         public string Text
         {
             get
@@ -22,9 +36,14 @@ namespace TypingTool.ViewModels
             }
         }
 
+        public InputViewModel(string typingQuote)
+        {
+            this.Quote = typingQuote ?? String.Empty;
+        }
         public InputViewModel()
         {
-            Text = "Sample text";
+            Quote = "Paste a quote to type here...";
+            Text = "Begin typing here...";
         }
     }
 }

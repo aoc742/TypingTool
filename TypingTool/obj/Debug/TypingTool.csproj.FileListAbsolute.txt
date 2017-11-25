@@ -16,3 +16,5 @@ c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\GeneratedInternalTypeHelper.g.cs
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\App.baml
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\Views\InputView.baml
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\Views\StatisticsView.g.cs
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\Views\StatisticsView.baml
