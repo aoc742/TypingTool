@@ -12,3 +12,7 @@ c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.csproj.GenerateResource.Cache
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.exe
 c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\TypingTool.pdb
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\Views\InputView.g.cs
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\App.baml
+c:\users\austin\documents\visual studio 2017\Projects\TypingTool\TypingTool\obj\Debug\Views\InputView.baml
