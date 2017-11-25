@@ -11,6 +11,8 @@ namespace TypingTool.ViewModels
 {
     public class InputViewModel : BaseViewModel
     {
+        private ParseText _fullText;
+         
         private string _quote = String.Empty;
         public string Quote
         {
@@ -21,11 +23,13 @@ namespace TypingTool.ViewModels
             set
             {
                 this._quote = value;
+                _fullText = new ParseText(value);
                 OnPropertyChanged(nameof(this.Quote));
             }
         }
 
-        private string _text = String.Empty;
+        private string _progressText = String.Empty;
+        private string _text = String.Empty; // current text field text (current word)
         public string Text
         {
             get
@@ -34,16 +38,29 @@ namespace TypingTool.ViewModels
             }
             set
             {
+                // Start timer
                 if (String.IsNullOrWhiteSpace(_text) && !String.IsNullOrWhiteSpace(value))
                 {
                     StatisticsViewModel.StartTimer.Execute(null);
                 }
-                if (value == _quote && !String.IsNullOrWhiteSpace(value))
+                // Stop timer
+                if ((_progressText + value) == _quote && !String.IsNullOrWhiteSpace(value))
                 {
                     StatisticsViewModel.StopTimer.Execute(null);
                     StatisticsViewModel.WordsPerMinute = (Quote.Length / 5) * (60 / StatisticsViewModel.GetTimeInSeconds());
                     Times.Add(new TimeResults(StatisticsViewModel.GetTimeInSeconds(), StatisticsViewModel.WordsPerMinute));
+                    _progressText = "";
+                    _fullText.GetNextWord(); // resets ParseText
                 }
+
+                // Clear Text when value reaches current ParseText Iteration
+                if (value == (_fullText.GetCurrent() + " "))
+                {
+                    _progressText += value;
+                    value = "";
+                    _fullText.GetNextWord();
+                }
+
                 this._text = value;
                 OnPropertyChanged(nameof(this.Text));
             }
@@ -97,6 +114,45 @@ namespace TypingTool.ViewModels
         {
             Time = time;
             WordsPerMinute = wordsPerMinute;
+        }
+    }
+
+    public class ParseText
+    {
+        private string _fullText = String.Empty;
+        private string _currentIteration;
+        private string[] _parsedTextArray;
+        private int _index = 0;
+
+
+        public ParseText(string fullText)
+        {
+            _fullText = fullText ?? String.Empty;
+
+            _parsedTextArray = _fullText.Split();
+            GetNextWord(); // Do once in constructor to initialize _currentIteration
+        }
+
+        public void GetNextWord()
+        {
+            if (_index >= _parsedTextArray.Length)
+            {
+                _index = 0; // reset index
+                _currentIteration = "";
+            }
+            int count = _index;
+            _index++;
+            _currentIteration = _parsedTextArray[count];
+        }
+
+        public string GetCurrent()
+        {
+            return _currentIteration;
+        }
+
+        public string GetFullText()
+        {
+            return _fullText;
         }
     }
 }
