@@ -107,6 +107,7 @@ namespace TypingTool.ViewModels
                     Text = "";
                     _progressText = "";
                     TypingEnabled = true;
+                    _fullText.Reset();
                     StatisticsViewModel.WordsPerMinute = 0;
                     StatisticsViewModel.ResetTimer.Execute(null);
                 }));
@@ -148,6 +149,12 @@ namespace TypingTool.ViewModels
 
             _parsedTextArray = _fullText.Split();
             GetNextWord(); // Do once in constructor to initialize _currentIteration
+        }
+
+        public void Reset()
+        {
+            _index = 0;
+            GetNextWord();
         }
 
         public void GetNextWord()
