@@ -28,6 +28,20 @@ namespace TypingTool.ViewModels
             }
         }
 
+        private bool _typingEnabled = true;
+        public bool TypingEnabled
+        {
+            get
+            {
+                return _typingEnabled;
+            }
+            set
+            {
+                this._typingEnabled = value;
+                OnPropertyChanged(nameof(TypingEnabled));
+            }
+        }
+
         private string _progressText = String.Empty;
         private string _text = String.Empty; // current text field text (current word)
         public string Text
@@ -47,9 +61,10 @@ namespace TypingTool.ViewModels
                 if ((_progressText + value) == _quote && !String.IsNullOrWhiteSpace(value))
                 {
                     StatisticsViewModel.StopTimer.Execute(null);
-                    StatisticsViewModel.WordsPerMinute = (Quote.Length / 5) * (60 / StatisticsViewModel.GetTimeInSeconds());
+                    StatisticsViewModel.WordsPerMinute = ((double)Quote.Length / 5.0) * (60 / StatisticsViewModel.GetTimeInSeconds());
                     Times.Add(new TimeResults(StatisticsViewModel.GetTimeInSeconds(), StatisticsViewModel.WordsPerMinute));
                     _progressText = "";
+                    TypingEnabled = false;
                     _fullText.GetNextWord(); // resets ParseText
                 }
 
@@ -90,6 +105,8 @@ namespace TypingTool.ViewModels
                 return _reset ?? (_reset = new DelegateCommand((obj) =>
                 {
                     Text = "";
+                    _progressText = "";
+                    TypingEnabled = true;
                     StatisticsViewModel.WordsPerMinute = 0;
                     StatisticsViewModel.ResetTimer.Execute(null);
                 }));

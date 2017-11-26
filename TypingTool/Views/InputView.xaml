@@ -27,7 +27,7 @@
 
             <StackPanel Grid.Row="1">
                 <Label Content="Type stuff here:" />
-                <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" FontSize="18" />
+                <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding TypingEnabled}" FontSize="18" />
             </StackPanel>
 
             <StackPanel Grid.Row="2">
